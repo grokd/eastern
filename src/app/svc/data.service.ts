@@ -6770,9 +6770,27 @@ export class DataService {
         ]
     }
 }; 
-  constructor() { }
+    currentHex;
+    
+    constructor() { }
 
-  getHex(hex: string, theRead: Number[]){
+    getCurrHex(){
+        return this.currentHex;   
+    }
+
+    updateCurrHex(newHex: string, theRead: Number[]){
+        let theHex = this.data[newHex];
+        console.log('Fetching ' + theHex.nameEn + ' data.');
+        let reads = [];
+        for(let i = 0; i < theRead.length; i++){
+            if(theRead[i]){ reads.push(theHex.readLines[i]) }
+        }
+        theHex.readLines = reads;
+        console.log(theHex);
+        this.currentHex = theHex;   
+    }
+
+    getHex(hex: string, theRead: Number[]){
         let theHex = this.data[hex];
         console.log('fetching ' + theHex.nameEn);
         let reads = [];
@@ -6782,24 +6800,17 @@ export class DataService {
         theHex.readLines = reads;
         console.log(theHex);
         return theHex;   
-  }
-
-  getRandomHex(){
-
-    // Get the Hex
-
-    let hex = [];
-    let reads = [];
-
-    for(let i = 0; i < 6; i++){
-        hex.push(String(Math.round(Math.random())));
-        if(Math.round(Math.random())) { reads.push(i) };
     }
 
-    let hexStr = hex.join('');
-    let hexData = this.getHex(hexStr, reads);
-
-    return hexData;
+    getRandomHex(){
+        let hex = [];
+        let reads = [];
+        for(let i = 0; i < 6; i++){
+            hex.push(String(Math.round(Math.random())));
+            if(Math.round(Math.random())) { reads.push(i) };
+        }
+        let hexStr = hex.join('');
+        this.currentHex = this.getHex(hexStr, reads);
   }
 
 }

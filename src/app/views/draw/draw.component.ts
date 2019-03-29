@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/svc/data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-draw',
@@ -9,10 +10,10 @@ import { DataService } from 'src/app/svc/data.service';
 export class DrawComponent implements OnInit {
   hex;
   data = {
-    hex: [0, 0, 0, 0, 0, 0],
+    hex: [null, null, null, null, null, null],
     read: [0,0,0,0,0,0]
   }
-  constructor(private ds: DataService) { }
+  constructor(private ds: DataService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -24,9 +25,14 @@ export class DrawComponent implements OnInit {
   }
 
   read() {
-    let hexStr = this.data.hex.join('');
-    this.hex = this.ds.getHex(hexStr, this.data.read);
-    console.log(hexStr, this.hex);
+    if(this.data.hex.includes(null)){
+      console.log('Unfinished hex');
+      return 
+    } else {
+      let hexStr = this.data.hex.join('');
+      this.hex = this.ds.updateCurrHex(hexStr, this.data.read);
+      this.router.navigate(['/hex/' + hexStr])
+    }
   }
 
 }
