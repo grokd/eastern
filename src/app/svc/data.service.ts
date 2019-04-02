@@ -6790,12 +6790,25 @@ export class DataService {
         this.currentHex = theHex;   
     }
 
-    getHex(hex: string, theRead: Number[]){
+    getHex(hex: string, theRead?: Number[]){
         let theHex = this.data[hex];
         console.log('fetching ' + theHex.nameEn);
         let reads = [];
-        for(let i = 0; i < theRead.length; i++){
-            if(theRead[i]){ reads.push(theHex.readLines[i]) }
+        if(!theRead) {
+            let theRead = [];
+            for(let i = 0; i < 6; i++){
+                if(Math.round(Math.random())) { theRead.push(i) };
+            }
+
+            for(let i = 0; i < theRead.length; i++){
+                if(theRead[i]){ reads.push(theHex.readLines[i]) }
+            }
+
+        } else {
+
+            for(let i = 0; i < theRead.length; i++){
+                if(theRead[i]){ reads.push(theHex.readLines[i]) }
+            }
         }
         theHex.readLines = reads;
         console.log(theHex);

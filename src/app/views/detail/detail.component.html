@@ -1,0 +1,33 @@
+<div class="title">
+  <span class="zh">{{hex.nameZh}} - {{hex.nameEn}} </span>
+  <span class="altEn" *ngIf="hex.altNameEn">({{hex.altNameEn}})</span>
+</div>
+<div class="intro">
+    <hr>
+    <h1>Introduction</h1>
+    <hr>
+  <p class="para" *ngFor="let introLine of hex.introLines">{{introLine}}</p>
+</div>
+<div class="judgement">
+    <hr>
+    <h1>Judgement</h1>
+    <hr>
+  <p class="line" *ngFor="let judgementLine of hex.judgement.lines">{{judgementLine}}</p>
+  <p class="para" *ngFor="let judgementPara of hex.judgement.description">{{judgementPara}}</p>
+</div>
+<div class="image">
+    <hr>
+    <h1>Image</h1>
+    <hr>
+  <p class="line" *ngFor="let imageLine of hex.image.lines">{{imageLine}}</p>
+  <p class="para" *ngFor="let imagePara of hex.image.description">{{imagePara}}</p>
+</div>
+<div class="reads">
+    <hr>
+  <h1>Readings</h1>
+  <div class="read" *ngFor="let readLine of hex.readLines">
+    <hr>
+    <p class="line" *ngFor="let aLine of readLine.text">{{aLine}}</p>
+    <p class="para" *ngFor="let readPara of readLine.description">{{readPara}}</p>
+  </div>
+</div>

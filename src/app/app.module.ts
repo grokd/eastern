@@ -7,11 +7,13 @@ import { DrawComponent } from './views/draw/draw.component';
 import { DataService } from './svc/data.service';
 import { ClarityModule } from '@clr/angular';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DetailComponent } from './views/detail/detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DrawComponent
+    DrawComponent,
+    DetailComponent
   ],
   imports: [
     BrowserModule,

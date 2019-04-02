@@ -1,25 +1,13 @@
 <div class="reading">
   <div class="read">
     <div class="readTop">
-      <div class="clr-row">
-        <div class="clr-col-lg-6 clr-col-12">
-            <a href="..." class="card clickable">
-                <div class="card-img">
-                    <img 
-                      src="../../../assets/yangread.png" 
-                      class="yang"
-                      alt="" 
-                      (click)="enterRead(0, 0, 1, ar1)" 
-                      #ar1>
-                </div>
-                <div class="card-block">
-                    <p class="card-text">
-                        ...
-                    </p>
-                </div>
-            </a>
-        </div>
-      </div>
+        <img 
+          src="../../../assets/yangread.png"
+          [class.active]=""
+          class="yang"
+          alt="" 
+          (click)="enterRead(0, 0, 1, ar1)" 
+          #ar1>
         <img 
           src="../../../assets/yin.png" 
           class="yin"

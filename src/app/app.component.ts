@@ -26,16 +26,13 @@ import { Component } from '@angular/core';
   <nav class="subnav">
     <ul class="nav">
         <li class="nav-item">
-            <a class="nav-link active" href="">Make a reading</a>
+            <a class="nav-link active" href="">Enter Reading</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">Management</a>
+            <a class="nav-link" routerLink="['/detail', 100101]">Random Reading</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">Cloud</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Tenants</a>
+            <a class="nav-link" href="#">Journal</a>
         </li>
     </ul>
   </nav>
